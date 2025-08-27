@@ -223,16 +223,17 @@ body {
 }
 
 .overlay .line1 {
-  font-size: 1.6rem;
+  font-size: clamp(1.0rem, 2.5vw, 1.6rem); /* 最小1.2rem ～ 最大1.6rem */
   font-weight: 500;
 }
 
 .overlay .line2 {
-  font-size: 1.0rem;
-  font-weight: 100; /* 二行目を細く */
+  font-size: clamp(0.7rem, 2vw, 1rem); /* 最小0.9rem ～ 最大1rem */
+  font-weight: 100;
   margin-top: 2px;
   letter-spacing: 0.08em;
 }
+
 
 /* ===== フッター ===== */
 .site-footer {
@@ -347,17 +348,19 @@ body {
 
 .thumbnail-gallery {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
 .thumbnail-gallery img {
-  max-width: 120px;
-  height: auto; /* ← サイズ比に合わせる */
+  flex: 1 1 calc(20% - 8px);   /* 基本は5列 */
+  max-width: 120px;            /* 最大サイズ制限 */
+  min-width: 70px;             /* 最小サイズ制限 */
+  height: auto;
   cursor: pointer;
-  border: 2px solid rgba(0,0,0,0.1); /* サムネイル枠も比率に沿う */
+  border: 2px solid rgba(0,0,0,0.1);
   border-radius: 4px;
   transition: transform 0.3s ease, border 0.3s ease;
 }
@@ -365,6 +368,24 @@ body {
 .thumbnail-gallery img:hover {
   transform: scale(1.05);
   border: 2px solid #007acc;
+}
+
+/* タブレット (3列) */
+@media (max-width: 768px) {
+  .thumbnail-gallery img {
+    flex: 1 1 calc(25% - 8px);
+    max-width: 100px;
+    min-width: 65px;
+  }
+}
+
+/* スマホ (2列) */
+@media (max-width: 500px) {
+  .thumbnail-gallery img {
+    flex: 1 1 calc(33.3% - 8px);
+    max-width: 80px;
+    min-width: 45px;
+  }
 }
 
 /* ===== 詳細ページの項目表（フラットデザイン） ===== */
