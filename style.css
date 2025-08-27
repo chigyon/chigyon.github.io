@@ -1,0 +1,334 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  color: #333;
+  font-family: "Noto Sans JP", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #f8f8f8;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 60s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 40px 40px, 40px 40px; }
+}
+
+/* ===== ヘッダー ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.08);
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #007acc;
+}
+
+/* ===== ギャラリー ===== */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 140px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  flex: 1 1 280px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+.card:nth-child(7) { animation-delay: 0.7s; }
+.card:nth-child(8) { animation-delay: 0.8s; }
+.card:nth-child(9) { animation-delay: 0.9s; }
+.card:nth-child(10) { animation-delay: 1.0s; }
+.card:nth-child(11) { animation-delay: 1.1s; }
+.card:nth-child(12) { animation-delay: 1.2s; }
+.card:nth-child(13) { animation-delay: 1.3s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 画像 ===== */
+.img-container {
+  position: relative;
+  display: inline-flex; /* 画像サイズに合わせる */
+  align-items: center;
+  justify-content: center;
+}
+
+.img-container img {
+  max-width: 100%;
+  display: block;
+  border: 2.5px solid rgba(0,0,0,0.03);
+  border-radius: 4px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.025);
+  filter: brightness(0.85);
+}
+
+/* ===== オーバーレイ文字 ===== */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay span {
+  display: block;
+  color: #fff;
+  transition: font-size 0.3s ease;
+}
+
+.overlay .line1 {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.overlay .line2 {
+  font-size: 1.0rem;
+  font-weight: 100; /* 二行目を細く */
+  margin-top: 2px;
+  letter-spacing: 0.08em;
+}
+
+/* ===== フッター ===== */
+.site-footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 18px 20px;
+  text-align: center;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 1024px) {
+  .gallery {
+    gap: 20px;
+    padding: 130px 18px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .gallery {
+    padding: 110px 16px 30px;
+    gap: 18px;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    padding: 90px 12px 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+
+/* ===== 詳細ページ ===== */
+.detail-page {
+  padding: 140px 20px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-inner {
+  max-width: 800px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+.detail-img {
+  width: 100%;
+  border: 2px solid rgba(0,0,0,0.05);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  animation: zoomIn 0.8s ease;
+}
+
+.detail-title {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007acc;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #005fa3;
+}
+
+/* ===== アニメーション追加 ===== */
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== 詳細ページの複数画像 ===== */
+.detail-main-img {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-main-img img {
+  max-width: 100%;
+  height: auto; /* ← 比率を保持 */
+  border: 2px solid rgba(0,0,0,0.1); /* 画像に沿った枠 */
+  border-radius: 6px;
+  animation: zoomIn 0.8s ease;
+}
+
+.thumbnail-gallery {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.thumbnail-gallery img {
+  max-width: 120px;
+  height: auto; /* ← サイズ比に合わせる */
+  cursor: pointer;
+  border: 2px solid rgba(0,0,0,0.1); /* サムネイル枠も比率に沿う */
+  border-radius: 4px;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.thumbnail-gallery img:hover {
+  transform: scale(1.05);
+  border: 2px solid #007acc;
+}
+
+/* ===== 詳細ページの項目表（フラットデザイン） ===== */
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+.detail-table th, 
+.detail-table td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0,0,0,0.1); /* 行の区切りだけ */
+}
+
+.detail-table th {
+  font-weight: 600;
+  width: 25%;
+  color: #000;
+}
+
+.detail-table td {
+  font-weight: 400;
+  color: #333;
+}
+
