@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品詳細</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-title">作品詳細</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- 詳細コンテンツ -->
+  <main class="detail-page">
+    <div class="detail-inner">
+      <!-- メイン画像 -->
+      <div class="detail-main-img">
+        <img src="C:\Users\happy\Desktop\gallery\image\よだか.png" alt="メイン画像" id="mainImage">
+      </div>
+
+      <!-- サムネイル群 -->
+      <div class="thumbnail-gallery">
+        <img src="C:\Users\happy\Desktop\gallery\image\よだか.png" alt="サンプル1" onclick="changeImage(this)">
+        <img src="C:\Users\happy\Desktop\gallery\image\刹夏.png" alt="サンプル2" onclick="changeImage(this)">
+        <img src="C:\Users\happy\Desktop\gallery\image\両儀葬々.png" alt="サンプル3" onclick="changeImage(this)">
+        <img src="C:\Users\happy\Desktop\gallery\image\タナ死.png" alt="サンプル4" onclick="changeImage(this)">
+      </div>
+
+      <h1 class="detail-title">サンプル作品</h1>
+      <p class="detail-desc">
+        なにか書く<br>
+        なにか書く<br>
+        なにか書く
+      </p>
+      <br>
+
+      <!-- 項目表 -->
+      <table class="detail-table"> 
+        <tr>
+          <th>制作年</th>
+          <td>2025</td>
+        </tr>
+        <tr>
+          <th>使用ツール</th>
+          <td>Photoshop, Illustrator</td>
+        </tr>
+        <tr>
+          <th>サイズ</th>
+          <td>2000×1500px</td>
+        </tr>
+      </table>
+
+      <a href="index.html" class="back-btn">一覧へ戻る</a>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    nani_kakuno?.koko
+  </footer>
+
+  <!-- サムネイルクリックでメイン画像切替 -->
+  <script>
+    function changeImage(element) {
+      document.getElementById('mainImage').src = element.src;
+    }
+  </script>
+
+</body>
+</html>
