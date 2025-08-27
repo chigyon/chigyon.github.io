@@ -84,7 +84,7 @@ body {
 /* スマホ幅（ヘッダー2段になる可能性が高い） */
 @media (max-width: 480px) {
   body {
-    padding-top: 140px; /* 必要に応じて調整 */
+    padding-top: 90px; /* 必要に応じて調整 */
   }
 }
 
