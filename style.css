@@ -71,13 +71,13 @@ html, body {
 
 /* デフォルト（PC幅）: ヘッダーの高さ ≈ 80px */
 body {
-  padding-top: 10px; /* ヘッダー分の余白を確保 */
+  padding-top: 0px; /* ヘッダー分の余白を確保 */
 }
 
 /* タブレット以下（ヘッダーが少し高くなる） */
 @media (max-width: 768px) {
   body {
-    padding-top: 70px; /* ヘッダーが縦に広がる分を余白追加 */
+    padding-top: 25px; /* ヘッダーが縦に広がる分を余白追加 */
   }
 }
 
