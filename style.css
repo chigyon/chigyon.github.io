@@ -67,29 +67,77 @@ html, body {
   color: #007acc;
 }
 
-/* ===== ギャラリー ===== */
+/* ===== ギャラリー（3列↔2列） ===== */
+/* デフォルトは2列（スマホ含めて絶対に1列にしない） */
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 25px;
   padding: 140px 20px 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* 画面が十分広いときは3列 */
+@media (min-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* 既存の @media (max-width: 768px / 480px) で
+   .gallery に flex 指定や flex-direction を当てている場合でも、
+   この上書きで常に2列を維持します */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 110px 16px 30px;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 90px 12px 20px;
+    gap: 16px;
+  }
+}
+
+/* ===== カード（Grid対応） ===== */
+/* Gridでは flex 指定や max-width は不要。幅100%でセルにフィットさせる */
 .card {
-  flex: 1 1 280px;
-  max-width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* 旧: flex: 1 1 280px; max-width: 400px; display:flex; align-items:center; justify-content:center; */
+  width: 100%;
+  display: block;            /* セル全体をクリック可能に */
   position: relative;
   overflow: hidden;
   cursor: pointer;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
 }
+
+/* ===== 画像コンテナ（セル幅にフィット） ===== */
+.img-container {
+  position: relative;
+  width: 100%;               /* セル幅いっぱい */
+}
+
+.img-container img {
+  width: 100%;               /* 画像をセル幅にフィット */
+  height: auto;              /* 比率維持 */
+  display: block;
+  border: 2.5px solid rgba(0,0,0,0.03);
+  border-radius: 4px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* ホバー時の拡大・暗くする演出はそのまま */
+.card:hover img {
+  transform: scale(1.025);
+  filter: brightness(0.85);
+}
+
 
 .card:nth-child(1) { animation-delay: 0.1s; }
 .card:nth-child(2) { animation-delay: 0.2s; }
